@@ -1,0 +1,69 @@
+html(lang="en", ng-app='GroupApp')
+	head
+		link(rel="stylesheet", href="https://ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.css")
+		link(rel='stylesheet', href='/css/group.css')
+
+	body.md-padding(layout='row', ng-controller='GroupCtrl',ng-cloak)
+		form(method="post",action="/creategroup" )
+			lable create name group
+			input(type="text",name="name_group",value='')
+			for d in data
+				input(type="checkbox",name="friend_groups",value=d.fname)
+				| #{d.fname}
+			
+			md-input-container.md-block(ng-repeat="d in Friendlist")
+				md-checkbox(name="friend_groups",ng-model="isChecked",ng-checked='toggle(d.fname,selected)' required)
+					|	{{d.fname}}
+			button(ng-click="showfriend()") add friend in group
+
+			input(type="submit",value="create")
+
+		//- p(ng-repeat="d in Friendlist") {{d.fname}}
+		//- div(layout='row', layout-wrap='', flex='')
+		//- 	div(flex-xs='', flex='50')
+		//- 		md-checkbox(aria-label='Select All', ng-checked='isChecked()', md-indeterminate='isIndeterminate()', ng-click='toggleAll()')
+		//- 			span(ng-if='isChecked()') Un-
+		//- 			| Select All
+
+		//- 	.demo-select-all-checkboxes(flex='100', ng-repeat='d in Friendlist')
+		//- 		md-checkbox(ng-checked='exists(d.fname, selected)', ng-click='toggle(d.fname, selected)')
+		//- 			| {{ d.fname }}
+		//- 	h2  hi 
+		//- 		code(style='display: block; padding: 8px;') {{selected | json}}
+
+	//- 	div
+	//- 		h1.md-title Pick a vegetable below
+	//- 		div(layout='row')
+	//- 			md-input-container
+	//- 				label Vegetables
+	//- 				md-select(ng-model='selectedVegetables', md-on-close='clearSearchTerm()', data-md-container-class='GroupApp', multiple='')
+	//- 					md-select-header.demo-select-header
+	//- 						input.demo-header-searchbox.md-text(ng-model='searchTerm', type='search', placeholder='Search for a vegetable..')
+	//- 					md-optgroup(label='vegetables')
+	//- 						md-option(ng-value='vegetable', ng-repeat='vegetable in vegetables |\
+	//- 						filter:searchTerm') {{vegetable}}
+	//- body
+	//- 	.md-padding.demo(ng-controller='AppCtrl')
+	//- 		div(layout='row', layout-wrap='')
+	//- 			div(flex='100', layout='column')
+	//- 				div
+	//- 					//
+	//- 						In IE, we cannot apply flex directly to <fieldset>
+	//- 						@see https://github.com/philipwalton/flexbugs#9-some-html-elements-cant-be-flex-containers
+	//- 					fieldset.demo-fieldset
+	//- 						legend.demo-legend Using md-checkbox with the 'indeterminate' attribute' 
+	//- 						div(layout='row', layout-wrap='', flex='')
+	//- 							div(flex-xs='', flex='50')
+	//- 								md-checkbox(aria-label='Select All', ng-checked='isChecked()', md-indeterminate='isIndeterminate()', ng-click='toggleAll()')
+	//- 									span(ng-if='isChecked()') Un-
+	//- 									| Select All
+	//- 							.demo-select-all-checkboxes(flex='100', ng-repeat='item in items')
+	//- 								md-checkbox(ng-checked='exists(item, selected)', ng-click='toggle(item, selected)')
+	//- 									| {{ item }}
+
+	script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js")
+	script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular-animate.min.js")
+	script(src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.5/angular-aria.min.js")
+	script(src="https://ajax.googleapis.com/ajax/libs/angular_material/0.8.3/angular-material.min.js")
+	script(src="https://cdn.jsdelivr.net/angular-material-icons/0.4.0/angular-material-icons.min.js")
+	script(type="text/javascript" ,src="js/angular/group.js")

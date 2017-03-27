@@ -1,0 +1,36 @@
+extends layout
+
+block content
+
+	nav.navbar.navbar-default.navbar-fixed-top
+		.container
+			.navbar-header
+				.navbar-brand Control Panel
+			ul.nav.navbar-nav.navbar-right
+				li
+					.navbar-btn#btn-logout.btn.btn-default
+						| Sign Out
+
+	form(method='post', action='/web/webinfor/save')
+		textarea#text(type='text' ,name='text', placeholder='ตัวอักษรห้ามเกิน 150 ตัวอักษร', style='width:80%;height:172px;border:0;margin-top:80px;margin-left: auto;margin-right: auto;display: block;margin-bottom: 20px')
+		input#date(name='announce1', type='date', placeholder='วันโปรโมท', style='width:80%;margin-left: auto;margin-right: auto;display: block; margin-bottom: 20px')
+		select(name='factory1', style='width:80%;margin-left: auto;margin-right: auto;display: block;margin-bottom: 20px')
+			option(disabled='disabled', selected='selected', value='คณะทั้งหมด') คณะทั้งหมด
+			option(value="คณะวิศวกรรมศาสตร์") คณะวิศวกรรมศาสตร์
+			option(value="คณะวิทยาศาสตร์") คณะวิทยาศาสตร์
+			option(value="คณะสถาปัตกรรมศาสตร์") คณะสถาปัตกรรมศาสตร์
+			option(value="คณะเกษตรศาสตร์") คณะเกษตรศาสตร์
+		input.btn.btn-primary(type="submit",name="save",value="save",style='margin-left: auto;margin-right: auto;display: block;')
+		
+		
+block scripts
+	script(src='/vendor/jquery-2.2.3.min.js')
+	script(src='/vendor/jquery.form.min.js')
+	script(src='/vendor/bootstrap.min.js')
+	script(src='/js/views/home.js')
+	script(src='/js/controllers/homeController.js')
+	script(src='/js/form-validators/accountValidator.js')
+	script.
+		//- var text = $('#text').submit(){
+
+		//- }
